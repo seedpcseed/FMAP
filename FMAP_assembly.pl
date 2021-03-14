@@ -9,7 +9,7 @@ use List::Util qw(max);
 
 (my $fmapPath = abs_path($0)) =~ s/\/[^\/]*$//;
 my $database = loadDefaultDatabase();
-my $databasePrefix = "$fmapPath/FMAP_data/$database";
+my $databasePrefix = "databases/FMAP/$database"; # my $databasePrefix = "$fmapPath/FMAP_data/$database";
 my @codonList = ();
 
 GetOptions('h' => \(my $help = ''),
@@ -83,7 +83,7 @@ foreach($outputDirectory, $temporaryDirectory) {
 	die "ERROR in $0: '$_' is not a writable directory.\n" unless(-d $_ && -w $_);
 }
 
-if($databasePrefix eq "$fmapPath/FMAP_data/$database") {
+if($databasePrefix eq "databases/FMAP/$database") {
 	if($database =~ /^orthology_uniref/) {
 		$orthologyDefinitionFile = "$fmapPath/FMAP_data/KEGG_orthology.txt" if($orthologyDefinitionFile eq '');
 	} elsif($database =~ /^ARDB/ || $database =~ /^betalactamases/) {
